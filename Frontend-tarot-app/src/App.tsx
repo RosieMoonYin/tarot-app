@@ -1,7 +1,16 @@
 import { useState } from "react";
-import frontImage from "./assets/tarot-card-front.png";
-import backImage from "./assets/tarot-card-back.png";
+import frontImg from "./assets/tarot-card-front.png";
+import backImg from "./assets/tarot-card-back.png";
 import "./App.css";
+
+const tarotCard = {
+  id: 1,
+  name: "The Fool",
+  meaning:
+    "The Fool represents new beginnings, having faith in the future, and being carefree.",
+  frontImg: frontImg,
+  backImg: backImg,
+};
 
 function App() {
   const [isFront, setIsFront] = useState(true);
@@ -19,7 +28,7 @@ function App() {
       </div>
       <div className="card">
         <img
-          src={isFront ? frontImage : backImage}
+          src={isFront ? tarotCard.frontImg : tarotCard.backImg}
           alt="tarot card"
           className="card-image"
         />

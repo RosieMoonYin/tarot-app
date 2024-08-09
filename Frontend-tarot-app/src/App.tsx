@@ -57,7 +57,7 @@ function App() {
       </div>
       <div className="card">
         <img
-          src={isFront ? tarotCards.backImg : tarotCards.frontImg}
+          src={isFront ? tarotCards[0].backImg : tarotCards[0].frontImg}
           alt="tarot card"
           className="card-image"
         />

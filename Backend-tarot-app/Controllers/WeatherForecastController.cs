@@ -1,25 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
-
 namespace Backend_tarot_app.Controllers;
+using Backend_tarot_app.Models;
 
 [ApiController]
-[Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+[Route("api/[controller]")]
+public class TarotCardController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
-    [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
-    {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+     private static readonly List<TarotCard> tarotCards = new List<TarotCard>
         {
-            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
+            new TarotCard(1, "The Fool", ["The Fool represents new beginnings...", "reverse meaning"], "..png", "..back.png"),
+            new TarotCard(2, "The Lovers", ["The Lovers represent love, union...", "reverse meaning"] , "..png", "..back.png"),
+        };
+
+    [HttpGet]
+    public ActionResult<IEnumerable<TarotCard>> GetAllCards()
+    {
+        return tarotCards;
     }
 }

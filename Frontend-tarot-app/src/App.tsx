@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { isValidElement, useState } from "react";
 import "./App.css";
 
 import loversFront from "./assets/lovers.png";
@@ -44,6 +44,14 @@ function App() {
   const [isFront, setIsFront] = useState(true);
   const [currentCard, setCurrentCard] = useState(tarotCards[0]);
 
+  // (document.getElementById("my_modal_5") as HTMLDialogElement).showModal();
+  const showModal = (id: string) => {
+    const modal = document.getElementById(id) as HTMLDialogElement;
+    if (modal) {
+      modal.showModal();
+    }
+  };
+
   const handleClick = () => {
     setIsFront(!isFront);
 
@@ -51,7 +59,7 @@ function App() {
       const randomIndex = Math.floor(Math.random() * tarotCards.length);
       setCurrentCard(tarotCards[randomIndex]);
     }
-    (document.getElementById("my_modal_5") as HTMLDialogElement)?.showModal();
+    showModal("my_modal_5");
   };
   return (
     <>

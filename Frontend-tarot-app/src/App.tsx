@@ -39,17 +39,32 @@ function App() {
   };
 
   const handleClick = () => {
-    setIsFront(!isFront);
-
-    if (isFront) {
+    // setIsFront(!isFront);
+    // if (isFront) {
+    //   const randomIndex = Math.floor(Math.random() * tarotCards.length);
+    //   setCurrentCard(tarotCards[randomIndex]);
+    //   showModal("my_modal_5");
+    // }
+    if (readingType === "oneCard") {
       const randomIndex = Math.floor(Math.random() * tarotCards.length);
       setCurrentCard(tarotCards[randomIndex]);
-      showModal("my_modal_5");
+    } else if (readingType === "threeCard") {
+      const selectedCards = [];
+      for (let i = 0; i < 3; i++) {
+        const randomIndex = Math.floor(Math.random() * tarotCards.length);
+        selectedCards.push(tarotCards[randomIndex]);
+      }
+      setCurrentCard(selectedCards[0]);
     }
+
+    setIsFront(!isFront);
+    showModal("my_modal_5");
   };
+
   if (!currentCard) {
     return <p>I AM LOADING or empty...</p>;
   }
+
   return (
     <>
       <div>

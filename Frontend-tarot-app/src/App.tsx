@@ -51,14 +51,14 @@ function App() {
       const randomIndex = Math.floor(Math.random() * tarotCards.length);
       setCurrentCard(tarotCards[randomIndex]);
     }
+    (document.getElementById("my_modal_5") as HTMLDialogElement)?.showModal();
   };
   return (
     <>
+      <div>
+        <h1 className="text-3xl font-bold underline">Tarot Reader</h1>
+      </div>
       <section className="">
-        <div>
-          <h1 className="text-3xl font-bold underline">Tarot Reader</h1>
-        </div>
-
         <div className="card">
           <img
             src={isFront ? currentCard.backImg : currentCard.frontImg}
@@ -67,10 +67,18 @@ function App() {
             onClick={handleClick}
           />
         </div>
-        <div>
-          <p>Click on the button to pick a card</p>
-          {!isFront && <p>{currentCard.meaning}</p>}
-        </div>
+
+        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">{currentCard.name}</h3>
+            <p className="py-4">{currentCard.meaning}</p>
+            <div className="modal-action">
+              <form method="dialog">
+                <button className="btn">Close</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
       </section>
     </>
   );

@@ -4,6 +4,16 @@
   padding: 2rem;
   text-align: center;
 }
+
+/*_____Centers within the viewport is more responsive YAY!_____ */
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 2rem;
+}
+
 /*_______fixed dimension and positiotion for the 'card' container______*/
 .card {
   width: 300px;

@@ -1,10 +1,10 @@
-import { isValidElement, useState } from "react";
 import "./App.css";
 
 import loversFront from "./assets/lovers.png";
 import emperorFront from "./assets/emperor.png";
 import hierophantFront from "./assets/hierophant.png";
 import backImg from "./assets/tarot-card-back.png";
+import { useState } from "react";
 
 const tarotCards = [
   {
@@ -58,8 +58,8 @@ function App() {
     if (isFront) {
       const randomIndex = Math.floor(Math.random() * tarotCards.length);
       setCurrentCard(tarotCards[randomIndex]);
+      showModal("my_modal_5");
     }
-    showModal("my_modal_5");
   };
   return (
     <>

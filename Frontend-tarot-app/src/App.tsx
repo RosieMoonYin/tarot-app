@@ -57,7 +57,7 @@ function App() {
   return (
     <>
       <div>
-        <h1>Tarot Reader</h1>
+        <h1 className="text-3xl font-bold underline">Tarot Reader</h1>
       </div>
       <div className="card">
         <img

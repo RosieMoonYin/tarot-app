@@ -10,6 +10,10 @@ function App() {
   const [isFront, setIsFront] = useState(true);
   const [currentCard, setCurrentCard] = useState(tarotCards[0]);
 
+  const [readingType, setReadingType] = useState<"oneCard" | "threeCard">(
+    "oneCard"
+  );
+
   useEffect(() => {
     fetch("http://localhost:5070/api/TarotCard")
       .then((response) => {
@@ -50,6 +54,20 @@ function App() {
     <>
       <div>
         <h1 className="text-3xl font-bold underline">Tarot Reader</h1>
+      </div>
+      <div>
+        <button
+          className={`btn ${readingType === "oneCard"}`}
+          onClick={() => setReadingType("oneCard")}
+        >
+          One card reading
+        </button>
+        <button
+          className={`btn ${readingType === "threeCard"}`}
+          onClick={() => setReadingType("threeCard")}
+        >
+          Three card reading
+        </button>
       </div>
       <section className="">
         <Card

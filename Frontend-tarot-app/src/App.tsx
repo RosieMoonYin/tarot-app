@@ -11,18 +11,14 @@ function App() {
   const [currentCard, setCurrentCard] = useState(tarotCards[0]);
 
   useEffect(() => {
-    console.log("DEBUG useEffect is running");
     fetch("http://localhost:5070/api/TarotCard")
       .then((response) => {
-        console.log("DEBUG Fetch response YAY:", response);
-
         if (!response.ok) {
           throw new Error("sorry 200 OK was not returned");
         }
         return response.json();
       })
       .then((data) => {
-        console.log("DEBUG Fetched data YAY:", data);
         setTarotCards(data);
         setCurrentCard(data[0]);
       })

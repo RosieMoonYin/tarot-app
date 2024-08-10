@@ -1,12 +1,11 @@
 import "./App.css";
-
 import { useEffect, useState } from "react";
 import { TarotCardType } from "./types/tarotCardType";
 import { imageMap } from "./utils/imageMap";
+import Card from "./components/card.tsx";
 
 function App() {
   const [tarotCards, setTarotCards] = useState<TarotCardType[]>([]);
-
   const [isFront, setIsFront] = useState(true);
   const [currentCard, setCurrentCard] = useState(tarotCards[0]);
 
@@ -55,8 +54,16 @@ function App() {
       <div>
         <h1 className="text-3xl font-bold underline">Tarot Reader</h1>
       </div>
+
       <section className="">
-        <div className="card">
+        <Card
+          card={currentCard}
+          isFront={isFront}
+          imageMap={imageMap}
+          onClick={handleClick}
+        />
+
+        {/* <div className="card">
           <img
             src={
               isFront
@@ -67,7 +74,7 @@ function App() {
             className="card-image"
             onClick={handleClick}
           />
-        </div>
+        </div> */}
         <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
           <div className="modal-box">
             <h3 className="font-bold text-lg">{currentCard.name}</h3>

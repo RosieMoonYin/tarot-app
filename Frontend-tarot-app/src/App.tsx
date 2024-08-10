@@ -42,12 +42,10 @@ const tarotCards = [
 
 function App() {
   const [isFront, setIsFront] = useState(true);
-  // const [buttonText, setButtonText] = useState("Card Front");
   const [currentCard, setCurrentCard] = useState(tarotCards[0]);
 
   const handleClick = () => {
     setIsFront(!isFront);
-    // setButtonText(isFront ? "Card Front" : "Card Back");
 
     if (isFront) {
       const randomIndex = Math.floor(Math.random() * tarotCards.length);
@@ -69,7 +67,6 @@ function App() {
             onClick={handleClick}
           />
         </div>
-        <div>{/* <button onClick={handleClick}>{buttonText}</button> */}</div>
         <div>
           <p>Click on the button to pick a card</p>
           {!isFront && <p>{currentCard.meaning}</p>}

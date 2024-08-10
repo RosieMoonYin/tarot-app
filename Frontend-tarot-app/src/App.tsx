@@ -58,6 +58,7 @@ function App() {
     <>
       <div>
         <h1 className="text-3xl font-bold underline">Tarot Reader</h1>
+        <button className="btn btn-primary">Button</button>
       </div>
       <div className="card">
         <img

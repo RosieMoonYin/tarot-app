@@ -51,7 +51,6 @@ function App() {
       <div>
         <h1 className="text-3xl font-bold underline">Tarot Reader</h1>
       </div>
-
       <section className="">
         <Card
           card={currentCard}

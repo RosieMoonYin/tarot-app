@@ -42,12 +42,12 @@ const tarotCards = [
 
 function App() {
   const [isFront, setIsFront] = useState(true);
-  const [buttonText, setButtonText] = useState("Card Front");
+  // const [buttonText, setButtonText] = useState("Card Front");
   const [currentCard, setCurrentCard] = useState(tarotCards[0]);
 
   const handleClick = () => {
     setIsFront(!isFront);
-    setButtonText(isFront ? "Card Front" : "Card Back");
+    // setButtonText(isFront ? "Card Front" : "Card Back");
 
     if (isFront) {
       const randomIndex = Math.floor(Math.random() * tarotCards.length);
@@ -56,22 +56,25 @@ function App() {
   };
   return (
     <>
-      <div>
-        <h1 className="text-3xl font-bold underline">Tarot Reader</h1>
-        <button className="btn btn-primary">Button</button>
-      </div>
-      <div className="card">
-        <img
-          src={isFront ? currentCard.backImg : currentCard.frontImg}
-          alt="tarot card"
-          className="card-image"
-        />
-        <button onClick={handleClick}>{buttonText}</button>
-      </div>
-      <div>
-        <p>Click on the button to pick a card</p>
-        {!isFront && <p>{currentCard.meaning}</p>}
-      </div>
+      <section className="">
+        <div>
+          <h1 className="text-3xl font-bold underline">Tarot Reader</h1>
+        </div>
+
+        <div className="card">
+          <img
+            src={isFront ? currentCard.backImg : currentCard.frontImg}
+            alt="tarot card"
+            className="card-image"
+            onClick={handleClick}
+          />
+        </div>
+        <div>{/* <button onClick={handleClick}>{buttonText}</button> */}</div>
+        <div>
+          <p>Click on the button to pick a card</p>
+          {!isFront && <p>{currentCard.meaning}</p>}
+        </div>
+      </section>
     </>
   );
 }

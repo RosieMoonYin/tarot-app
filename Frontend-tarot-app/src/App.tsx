@@ -4,7 +4,6 @@ import "./App.css";
 import loversFront from "./assets/lovers.png";
 import emperorFront from "./assets/emperor.png";
 import hierophantFront from "./assets/hierophant.png";
-import frontImg from "./assets/tarot-card-front.png";
 import backImg from "./assets/tarot-card-back.png";
 
 const tarotCards = [
@@ -13,7 +12,7 @@ const tarotCards = [
     name: "The Fool",
     meaning:
       "The Fool represents new beginnings, having faith in the future, and being carefree.",
-    frontImg: frontImg,
+    frontImg: loversFront,
     backImg: backImg,
   },
   {
@@ -44,12 +43,17 @@ const tarotCards = [
 function App() {
   const [isFront, setIsFront] = useState(true);
   const [buttonText, setButtonText] = useState("Card Front");
+  const [currentCard, setCurrentCard] = useState(tarotCards[0]);
 
   const handleClick = () => {
     setIsFront(!isFront);
     setButtonText(isFront ? "Card Front" : "Card Back");
-  };
 
+    if (isFront) {
+      const randomIndex = Math.floor(Math.random() * tarotCards.length);
+      setCurrentCard(tarotCards[randomIndex]);
+    }
+  };
   return (
     <>
       <div>
@@ -57,7 +61,7 @@ function App() {
       </div>
       <div className="card">
         <img
-          src={isFront ? tarotCards[0].backImg : tarotCards[0].frontImg}
+          src={isFront ? currentCard.backImg : currentCard.frontImg}
           alt="tarot card"
           className="card-image"
         />
@@ -65,6 +69,7 @@ function App() {
       </div>
       <div>
         <p>Click on the button to pick a card</p>
+        {!isFront && <p>{currentCard.meaning}</p>}
       </div>
     </>
   );

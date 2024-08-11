@@ -8,12 +8,11 @@ import Modal from "./components/modal.tsx";
 function App() {
   const [tarotCards, setTarotCards] = useState<TarotCardType[]>([]);
   const [isFront, setIsFront] = useState(true);
-  const [currentCard, setCurrentCard] = useState(tarotCards[0]);
+  // const [currentCard, setCurrentCard] = useState(tarotCards[0]);
   const [readingType, setReadingType] = useState<"oneCard" | "threeCard">(
     "oneCard"
   );
-
-  // const [selectedCards, setSelectedCards] = useState<TarotCardType[]>([])>;
+  const [selectedCards, setSelectedCards] = useState<TarotCardType[]>([]);
 
   useEffect(() => {
     fetch("http://localhost:5070/api/TarotCard")
@@ -25,7 +24,7 @@ function App() {
       })
       .then((data) => {
         setTarotCards(data);
-        setCurrentCard(data[0]);
+        setSelectedCards([data[0]]);
       })
       .catch((error) => {
         console.error("DEBUG the fetch didnt work here is the error:", error);
@@ -48,22 +47,23 @@ function App() {
     // }
     if (readingType === "oneCard") {
       const randomIndex = Math.floor(Math.random() * tarotCards.length);
-      setCurrentCard(tarotCards[randomIndex]);
+      setSelectedCards([tarotCards[randomIndex]]);
     } else if (readingType === "threeCard") {
-      const selectedCards = [];
-      for (let i = 0; i < 3; i++) {
+      const selected: TarotCardType[] = [];
+      const cardIndexes = new Set<number>();
+
+      while (cardIndexes.size < 3) {
         const randomIndex = Math.floor(Math.random() * tarotCards.length);
-        selectedCards.push(tarotCards[randomIndex]);
+        if (!cardIndexes.has(randomIndex)) {
+          cardIndexes.add(randomIndex);
+          selected.push(tarotCards[randomIndex]);
+        }
       }
-      setCurrentCard(selectedCards[0]);
+      setSelectedCards(selected);
     }
-    setIsFront(!isFront);
+    setIsFront(false);
     showModal("my_modal_5");
   };
-
-  if (!currentCard) {
-    return <p>I AM LOADING or empty...</p>;
-  }
 
   return (
     <>
@@ -72,27 +72,35 @@ function App() {
       </div>
       <div>
         <button
-          className={`btn ${readingType === "oneCard"}`}
+          className={`btn ${readingType === "oneCard" ? "btn-primary" : ""}`}
           onClick={() => setReadingType("oneCard")}
         >
           One card reading
         </button>
 
         <button
-          className={`btn ${readingType === "threeCard"}`}
+          className={`btn ${readingType === "threeCard" ? "btn-primary" : ""}`}
           onClick={() => setReadingType("threeCard")}
         >
           Three card reading
         </button>
       </div>
       <section className="">
-        <Card
-          card={currentCard}
-          isFront={isFront}
-          imageMap={imageMap}
-          onClick={handleClick}
-        />
-        <Modal card={currentCard} />
+        {selectedCards.length > 0 ? (
+          selectedCards.map((card, index) => (
+            <Card
+              key={index}
+              card={card}
+              isFront={isFront}
+              imageMap={imageMap}
+              onClick={handleClick}
+            />
+          ))
+        ) : (
+          <p>oopsy cards found!</p>
+        )}
+        {selectedCards.length > 3 && <Modal card={selectedCards[0]} />}
+        {/* <Modal card={selectedCards[0]} /> */}
       </section>
     </>
   );

@@ -2,6 +2,8 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { TarotCardType } from "./types/tarotCardType";
 import { imageMap } from "./utils/imageMap";
+import { selectRandomCards } from "./utils/cardSelector";
+
 import Card from "./components/card.tsx";
 import Modal from "./components/modal.tsx";
 
@@ -35,23 +37,23 @@ function App() {
     modal?.showModal();
   };
 
-  const selectRandomCards = (count: number): TarotCardType[] => {
-    const selected: TarotCardType[] = [];
-    const cardIndexes = new Set<number>();
+  // const selectRandomCards = (count: number): TarotCardType[] => {
+  //   const selected: TarotCardType[] = [];
+  //   const cardIndexes = new Set<number>();
 
-    while (cardIndexes.size < count) {
-      const randomIndex = Math.floor(Math.random() * tarotCards.length);
-      if (!cardIndexes.has(randomIndex)) {
-        cardIndexes.add(randomIndex);
-        selected.push(tarotCards[randomIndex]);
-      }
-    }
-    return selected;
-  };
+  //   while (cardIndexes.size < count) {
+  //     const randomIndex = Math.floor(Math.random() * tarotCards.length);
+  //     if (!cardIndexes.has(randomIndex)) {
+  //       cardIndexes.add(randomIndex);
+  //       selected.push(tarotCards[randomIndex]);
+  //     }
+  //   }
+  //   return selected;
+  // };
 
   const handleClick = () => {
     const cardCount = readingType == "oneCard" ? 1 : 3;
-    setSelectedCards(selectRandomCards(cardCount));
+    setSelectedCards(selectRandomCards(tarotCards, cardCount));
     setIsFront(false);
     showModal("my_modal_5");
   };

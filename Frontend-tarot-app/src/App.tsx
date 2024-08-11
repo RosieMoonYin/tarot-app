@@ -95,6 +95,7 @@ function App() {
         </div>
         {currentCards.length === 1 && <Modal card={currentCards[0]} />}
       </section>
+      <div></div>
     </>
   );
 }

@@ -15,21 +15,33 @@ function App() {
   const [selectedCards, setSelectedCards] = useState<TarotCardType[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:5070/api/TarotCard")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("sorry 200 OK was not returned");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setTarotCards(data);
-        setSelectedCards([data[0]]);
-      })
-      .catch((error) => {
-        console.error("DEBUG the fetch didnt work here is the error:", error);
-      });
+    const fetchTarotCards = async () => {
+      try {
+        const response = await fetch("http://localhost:5070/api/TarotCard");
+        if (!response.ok) throw new Error("sorry 200 OK was not returned");
+
+        const tarotCardData = await response.json();
+        setTarotCards(tarotCardData);
+        setSelectedCards([tarotCardData[0]]);
+      } catch (error) {
+        console.error("fetch didnt work:", error);
+      }
+    };
+    fetchTarotCards();
   }, []);
+  // .then((response) => {
+  //   if (!response.ok) {
+  //     throw new Error();
+  //   }
+  //   return response.json();
+  // })
+  // .then((data) => {
+  //   setTarotCards(data);
+  //   setSelectedCards([data[0]]);
+  // })
+  // .catch((error) => {
+  //   console.error("DEBUG the fetch didnt work here is the error:", error);
+  // });
 
   const showModal = (id: string) => {
     const modal = document.getElementById(id) as HTMLDialogElement;

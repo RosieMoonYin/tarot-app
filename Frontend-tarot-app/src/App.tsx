@@ -46,7 +46,6 @@ function App() {
         selected.push(tarotCards[randomIndex]);
       }
     }
-
     return selected;
   };
 
@@ -91,8 +90,7 @@ function App() {
         ) : (
           <p>oopsy cards found!</p>
         )}
-        {selectedCards.length > 3 && <Modal card={selectedCards[0]} />}
-        {/* <Modal card={selectedCards[0]} /> */}
+        <Modal card={selectedCards[0]} />
       </section>
     </>
   );

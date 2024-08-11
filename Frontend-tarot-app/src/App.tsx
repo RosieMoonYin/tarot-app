@@ -56,7 +56,6 @@ function App() {
       }
       setCurrentCard(selectedCards[0]);
     }
-
     setIsFront(!isFront);
     showModal("my_modal_5");
   };
@@ -77,6 +76,7 @@ function App() {
         >
           One card reading
         </button>
+
         <button
           className={`btn ${readingType === "threeCard"}`}
           onClick={() => setReadingType("threeCard")}

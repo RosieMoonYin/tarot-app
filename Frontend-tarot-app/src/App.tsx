@@ -9,10 +9,11 @@ function App() {
   const [tarotCards, setTarotCards] = useState<TarotCardType[]>([]);
   const [isFront, setIsFront] = useState(true);
   const [currentCard, setCurrentCard] = useState(tarotCards[0]);
-
   const [readingType, setReadingType] = useState<"oneCard" | "threeCard">(
     "oneCard"
   );
+
+  // const [selectedCards, setSelectedCards] = useState<TarotCardType[]>([])>;
 
   useEffect(() => {
     fetch("http://localhost:5070/api/TarotCard")

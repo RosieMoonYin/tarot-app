@@ -8,6 +8,7 @@
 /*_____Centers within the viewport is more responsive YAY!_____ */
 section {
   display: flex;
+  flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   height: 100vh;

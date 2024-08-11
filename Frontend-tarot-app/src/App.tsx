@@ -82,7 +82,7 @@ function App() {
         </button>
       </div>
 
-      <section>
+      <section className="">
         <div className="card">
           {currentCards.map((card, index) => (
             <TarotCard
@@ -95,7 +95,14 @@ function App() {
         </div>
         {currentCards.length === 1 && <Modal card={currentCards[0]} />}
       </section>
-      <div></div>
+      <div>
+        <a
+          href="https://github.com/users/RosieMoonYin"
+          className="link link-primary"
+        >
+          Click to visit my GitHub
+        </a>
+      </div>
     </>
   );
 }

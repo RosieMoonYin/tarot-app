@@ -19,9 +19,11 @@ section {
   width: 300px;
   height: 450px;
   display: flex;
+
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  margin: 4px;
   position: relative; /* now card won't shift on flip! */
 }
 /* _____tarot card takes up the full area of the 'card' + size is fixed____ */

@@ -29,25 +29,10 @@ function App() {
     };
     fetchTarotCards();
   }, []);
-  // .then((response) => {
-  //   if (!response.ok) {
-  //     throw new Error();
-  //   }
-  //   return response.json();
-  // })
-  // .then((data) => {
-  //   setTarotCards(data);
-  //   setSelectedCards([data[0]]);
-  // })
-  // .catch((error) => {
-  //   console.error("DEBUG the fetch didnt work here is the error:", error);
-  // });
 
   const showModal = (id: string) => {
     const modal = document.getElementById(id) as HTMLDialogElement;
-    if (modal) {
-      modal.showModal();
-    }
+    modal?.showModal();
   };
 
   const handleClick = () => {

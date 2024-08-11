@@ -35,29 +35,24 @@ function App() {
     modal?.showModal();
   };
 
-  const handleClick = () => {
-    // setIsFront(!isFront);
-    // if (isFront) {
-    //   const randomIndex = Math.floor(Math.random() * tarotCards.length);
-    //   setCurrentCard(tarotCards[randomIndex]);
-    //   showModal("my_modal_5");
-    // }
-    if (readingType === "oneCard") {
-      const randomIndex = Math.floor(Math.random() * tarotCards.length);
-      setSelectedCards([tarotCards[randomIndex]]);
-    } else if (readingType === "threeCard") {
-      const selected: TarotCardType[] = [];
-      const cardIndexes = new Set<number>();
+  const selectRandomCards = (count: number): TarotCardType[] => {
+    const selected: TarotCardType[] = [];
+    const cardIndexes = new Set<number>();
 
-      while (cardIndexes.size < 3) {
-        const randomIndex = Math.floor(Math.random() * tarotCards.length);
-        if (!cardIndexes.has(randomIndex)) {
-          cardIndexes.add(randomIndex);
-          selected.push(tarotCards[randomIndex]);
-        }
+    while (cardIndexes.size < count) {
+      const randomIndex = Math.floor(Math.random() * tarotCards.length);
+      if (!cardIndexes.has(randomIndex)) {
+        cardIndexes.add(randomIndex);
+        selected.push(tarotCards[randomIndex]);
       }
-      setSelectedCards(selected);
     }
+
+    return selected;
+  };
+
+  const handleClick = () => {
+    const cardCount = readingType == "oneCard" ? 1 : 3;
+    setSelectedCards(selectRandomCards(cardCount));
     setIsFront(false);
     showModal("my_modal_5");
   };

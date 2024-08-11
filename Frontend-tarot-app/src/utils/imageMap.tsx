@@ -1,4 +1,3 @@
-// src/utils/imageMap.ts
 import hermitFront from "../assets/hermit.png";
 import loversFront from "../assets/lovers.png";
 import emperorFront from "../assets/emperor.png";

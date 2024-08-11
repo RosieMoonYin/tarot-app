@@ -90,7 +90,7 @@ function App() {
         ) : (
           <p>oopsy cards found!</p>
         )}
-        <Modal card={selectedCards[0]} />
+        {selectedCards.length > 0 && <Modal card={selectedCards[0]} />}
       </section>
     </>
   );

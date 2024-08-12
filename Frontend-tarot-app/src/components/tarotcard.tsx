@@ -19,14 +19,18 @@ const TarotCard = ({ card, onCardClick }: TarotCardProps) => {
   };
 
   return (
-    <div className="card">
-      <img
-        src={isFront ? imageMap[card.id].backImg : imageMap[card.id].frontImg}
-        alt="tarot card"
-        className="card-image"
-        onClick={handleClick}
-      />
-    </div>
+    //one container flex min width media query, left align text text
+    //
+    <section>
+      <div className="card glow-box">
+        <img
+          src={isFront ? imageMap[card.id].backImg : imageMap[card.id].frontImg}
+          alt="tarot card"
+          className="card-image"
+          onClick={handleClick}
+        />
+      </div>
+    </section>
   );
 };
 

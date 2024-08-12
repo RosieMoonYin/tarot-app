@@ -8,11 +8,16 @@
 /*_____Centers within the viewport is more responsive YAY!_____ */
 section {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  height: 100vh;
-  padding: 2rem;
+  flex-wrap: wrap;
+  height: 70vh;
+  padding: 1rem;
+}
+
+button {
+  margin: 8px;
 }
 
 /*_______fixed dimension and positiotion for the 'card' container______*/
@@ -20,12 +25,25 @@ section {
   width: 300px;
   height: 450px;
   display: flex;
-
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   margin: 0 auto;
-  margin: 4px;
-  position: relative; /* now card won't shift on flip! */
+  margin-left: 4px;
+  margin-right: 4px;
+  position: relative;
+
+  overflow: visible; /* Prevents the content from overflowing */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+  /* Glow effect on hover */
+  box-shadow: 0 0 10px rgba(255, 252, 220, 0.563),
+    0 0 20px rgba(255, 252, 220, 0.563), 0 0 30px rgba(255, 252, 220, 0.563),
+    0 0 40px rgba(255, 252, 220, 0.563), 0 0 50px rgba(255, 252, 220, 0.563),
+    0 0 60px rgba(255, 252, 220, 0.563), 0 0 70px rgba(255, 252, 220, 0.563);
 }
 /* _____tarot card takes up the full area of the 'card' + size is fixed____ */
 .card-image {
@@ -35,4 +53,15 @@ section {
   position: absolute;
   top: 0;
   left: 0;
+  transition: transform 0.3s ease;
+}
+.card:hover .card-image {
+  transform: scale(1.02);
+}
+
+@media (max-width: 960px) {
+  section {
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
 }

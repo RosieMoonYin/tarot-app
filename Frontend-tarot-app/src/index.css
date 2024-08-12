@@ -29,7 +29,6 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-
   min-width: 320px;
   min-height: 100vh;
 }
@@ -37,6 +36,7 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  padding: 20px;
 }
 
 button {
@@ -49,6 +49,7 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  margin: 8px;
 }
 button:hover {
   border-color: #646cff;

@@ -82,8 +82,8 @@ function App() {
         </button>
       </div>
 
-      <section className="">
-        <div className="card">
+      <div>
+        <section>
           {currentCards.map((card, index) => (
             <TarotCard
               key={index}
@@ -92,9 +92,9 @@ function App() {
               // isFaceDown={readingType === "three"}
             />
           ))}
-        </div>
+        </section>
         {currentCards.length === 1 && <Modal card={currentCards[0]} />}
-      </section>
+      </div>
       <div>
         <a
           href="https://github.com/users/RosieMoonYin"

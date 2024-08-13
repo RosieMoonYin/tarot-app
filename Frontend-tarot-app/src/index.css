@@ -47,12 +47,16 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  border-color: #8f76ff;
   cursor: pointer;
   transition: border-color 0.25s;
   margin: 8px;
+  margin-top: 12px;
 }
 button:hover {
   border-color: #646cff;
+  box-shadow: 0 0 4px 1px rgba(100, 108, 255, 0.4),
+    0 0 8px 2px rgba(100, 108, 255, 0.3), 0 0 12px 4px rgba(100, 108, 255, 0.2);
 }
 button:focus,
 button:focus-visible {

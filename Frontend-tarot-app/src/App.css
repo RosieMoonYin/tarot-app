@@ -32,18 +32,25 @@ button {
   margin-right: 4px;
   position: relative;
 
-  overflow: visible; /* Prevents the content from overflowing */
+  overflow: visible;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .card:hover {
   transform: translateY(-10px) scale(1.05);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 
-  /* Glow effect on hover */
   box-shadow: 0 0 10px rgba(255, 252, 220, 0.563),
     0 0 20px rgba(255, 252, 220, 0.563), 0 0 30px rgba(255, 252, 220, 0.563),
     0 0 40px rgba(255, 252, 220, 0.563), 0 0 50px rgba(255, 252, 220, 0.563),
     0 0 60px rgba(255, 252, 220, 0.563), 0 0 70px rgba(255, 252, 220, 0.563);
+}
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+  box-shadow: 0 0 8px rgba(173, 216, 230, 0.4),
+    0 0 16px rgba(173, 216, 230, 0.4), 0 0 24px rgba(173, 216, 230, 0.4),
+    0 0 32px rgba(173, 216, 230, 0.4);
 }
 /* _____tarot card takes up the full area of the 'card' + size is fixed____ */
 .card-image {
@@ -59,6 +66,12 @@ button {
   transform: scale(1.02);
 }
 
+.github-link {
+  margin-top: 40px;
+  align-self: baseline;
+}
+
+/* _______tarot card takes up the full area of the 'card' + size is fixed______ */
 @media (max-width: 960px) {
   section {
     flex-wrap: wrap;
